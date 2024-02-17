@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import Layout from './components/Layout';
 import { CssBaseline } from '@mui/material';
 import LazyProgress from './components/LazyProgress';
+import Users from './pages/Users';
 
 const App: FC = (): JSX.Element => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -21,7 +22,7 @@ const App: FC = (): JSX.Element => {
         <LazyProgress />
       ) : (
         <Layout>
-          <div></div>
+          <Users />
         </Layout>
       )}
     </>
