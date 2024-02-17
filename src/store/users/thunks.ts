@@ -5,6 +5,7 @@ import { AsyncThunkConfig } from '@reduxjs/toolkit/dist/createAsyncThunk';
 import { UserData } from '../../types/usersState';
 import { RootState } from '../store';
 import { wait } from '../../utils/common';
+import { getAPIErrorMessage } from '../../utils/error';
 
 export const getUsers: AsyncThunk<UserData, void, AsyncThunkConfig> = createAsyncThunk(
   'users/getUsers',
@@ -25,7 +26,7 @@ export const getUsers: AsyncThunk<UserData, void, AsyncThunkConfig> = createAsyn
       responseData.totalPages = responseData.total_pages;
       return responseData;
     } catch (error) {
-      return rejectWithValue(error);
+      return rejectWithValue(getAPIErrorMessage(error));
     }
   }
 );

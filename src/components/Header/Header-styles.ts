@@ -3,7 +3,6 @@ import { THEME_MODES } from '../../utils/common';
 
 export const StyledDiv = styled('div')((theme) => ({
   display: 'flex',
-  flexGrow: 1,
   minHeight: '64px',
   backgroundColor: theme.theme.palette.mode === THEME_MODES.DARK_MODE ? '#333' : '#F1F1F1',
   borderBottom: '2px solid #E5E5E5',

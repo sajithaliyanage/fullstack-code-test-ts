@@ -12,6 +12,7 @@ const initialState: UsersState = {
   isBusy: false,
   isMoreLoading: true,
   isScrolled: false,
+  showError: false,
 };
 
 const usersReducer = createSlice({
@@ -21,6 +22,9 @@ const usersReducer = createSlice({
     updatePagination: (state) => {
       state.page += 1;
       state.isScrolled = true;
+    },
+    hideErrorAlert: (state) => {
+      state.showError = false;
     },
   },
   extraReducers: (builder) => {
@@ -39,9 +43,10 @@ const usersReducer = createSlice({
         state.error = action.payload;
         state.isBusy = false;
         state.isScrolled = false;
+        state.showError = true;
       });
   },
 });
 
-export const { updatePagination } = usersReducer.actions;
+export const { hideErrorAlert, updatePagination } = usersReducer.actions;
 export default usersReducer.reducer;

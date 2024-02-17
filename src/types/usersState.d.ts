@@ -19,4 +19,5 @@ export type UsersState = {
   isBusy: boolean;
   isMoreLoading: boolean;
   isScrolled: boolean;
+  showError: boolean;
 };
