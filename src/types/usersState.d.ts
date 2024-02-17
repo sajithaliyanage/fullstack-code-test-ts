@@ -1,8 +1,8 @@
 import { User } from './user';
 
 type UserData = {
-  pagination: Pagination;
   data: User[];
+  totalPages: number;
 };
 
 type RequestProps = {
@@ -10,17 +10,13 @@ type RequestProps = {
   pageSize: number;
 };
 
-export type Pagination = {
-  next: number | null;
-  prev: number | null;
-};
-
 export type UsersState = {
   page: number;
   pageSize: number;
   users: User[];
   noResults: boolean;
-  pagination: Pagination;
   error: unknown;
   isBusy: boolean;
+  isMoreLoading: boolean;
+  isScrolled: boolean;
 };

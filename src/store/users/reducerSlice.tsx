@@ -8,18 +8,21 @@ const initialState: UsersState = {
   pageSize: 10,
   users: [],
   noResults: false,
-  pagination: {
-    next: null,
-    prev: null,
-  },
   error: null,
   isBusy: false,
+  isMoreLoading: true,
+  isScrolled: false,
 };
 
 const usersReducer = createSlice({
   name: 'users',
   initialState,
-  reducers: {},
+  reducers: {
+    updatePagination: (state) => {
+      state.page += 1;
+      state.isScrolled = true;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getUsers.pending, (state) => {
@@ -28,14 +31,17 @@ const usersReducer = createSlice({
       .addCase(getUsers.fulfilled, (state, action) => {
         state.users =
           state.page !== 1 ? state.users.concat(action.payload.data) : action.payload.data;
-        state.pagination = action.payload.pagination;
+        state.isMoreLoading = state.page !== action.payload.totalPages;
+        state.isScrolled = false;
         state.isBusy = false;
       })
       .addCase(getUsers.rejected, (state, action) => {
         state.error = action.payload;
         state.isBusy = false;
+        state.isScrolled = false;
       });
   },
 });
 
+export const { updatePagination } = usersReducer.actions;
 export default usersReducer.reducer;
