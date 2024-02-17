@@ -1,11 +1,19 @@
 import { FC, useEffect, useState } from 'react';
 import Layout from './components/Layout';
-import { CssBaseline } from '@mui/material';
+import { createTheme, CssBaseline, PaletteOptions, ThemeProvider } from '@mui/material';
 import LazyProgress from './components/LazyProgress';
 import Users from './pages/Users';
+import { Theme } from '@emotion/react';
+import { useSelector } from 'react-redux';
+import { RootState } from './store/store';
 
 const App: FC = (): JSX.Element => {
+  const palette: PaletteOptions = useSelector((state: RootState) => state.theme.palette);
   const [loading, setLoading] = useState<boolean>(true);
+
+  const appTheme: Theme = createTheme({
+    palette,
+  });
 
   useEffect(() => {
     const timer: NodeJS.Timeout = setTimeout(() => {
@@ -16,7 +24,7 @@ const App: FC = (): JSX.Element => {
   }, []);
 
   return (
-    <>
+    <ThemeProvider theme={appTheme}>
       <CssBaseline />
       {loading ? (
         <LazyProgress />
@@ -25,7 +33,7 @@ const App: FC = (): JSX.Element => {
           <Users />
         </Layout>
       )}
-    </>
+    </ThemeProvider>
   );
 };
 

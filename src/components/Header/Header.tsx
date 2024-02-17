@@ -1,14 +1,18 @@
 import { AppBar, Typography } from '@mui/material';
 
-import { StyledDiv } from './Header-styles';
+import { StyledDiv, StyledInnerDiv } from './Header-styles';
+import ThemeMode from '../ThemeMode';
 
 const Header = (): JSX.Element => {
   return (
     <StyledDiv>
       <AppBar position="relative" color="transparent" elevation={0}>
-        <Typography variant="h6" noWrap component="div" align="center">
-          Users
-        </Typography>
+        <StyledInnerDiv>
+          <Typography variant="h6" noWrap component="div">
+            Users
+          </Typography>
+          <ThemeMode />
+        </StyledInnerDiv>
       </AppBar>
     </StyledDiv>
   );
