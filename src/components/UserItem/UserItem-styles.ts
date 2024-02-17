@@ -7,11 +7,12 @@ export const StyledListItemText = styled(ListItemText)(() => ({
   justifyContent: 'space-between',
   '& .MuiListItemText-primary': {
     fontWeight: 'bold',
+    fontSize: 16,
   },
 }));
 
 export const avatarStyles = {
-  width: 60,
-  height: 60,
+  width: 80,
+  height: 80,
   marginRight: 2,
 };

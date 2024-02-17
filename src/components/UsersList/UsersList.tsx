@@ -1,22 +1,22 @@
 import { Divider, List } from '@mui/material';
 import UserItem from '../UserItem';
 import { User } from '../../types/user';
+import { useDispatch, useSelector } from 'react-redux';
+import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
+
+import { RootState } from '../../store/store';
+import { useEffect } from 'react';
+import { getUsers } from '../../store/users/thunks';
 
 const UsersList = (): JSX.Element => {
-  const users: User[] = [
-    {
-      firstName: 'Sajitha',
-      lastName: 'Liyanage',
-      email: 'sajitha@gmail.com',
-      avatar: 'https://reqres.in/img/faces/8-image.jpg',
-    },
-    {
-      firstName: 'Sajitha',
-      lastName: 'Liyanage',
-      email: 'sajitha@gmail.com',
-      avatar: 'https://reqres.in/img/faces/8-image.jpg',
-    },
-  ];
+  const dispatch = useDispatch<ThunkDispatch<RootState, unknown, AnyAction>>();
+  const users: User[] = useSelector((state: RootState) => state.users.users);
+  const page: number = useSelector((state: RootState) => state.users.page);
+  const pageSize: number = useSelector((state: RootState) => state.users.pageSize);
+
+  useEffect(() => {
+    dispatch(getUsers({ page, pageSize }));
+  }, [dispatch, page, pageSize]);
 
   return (
     <>

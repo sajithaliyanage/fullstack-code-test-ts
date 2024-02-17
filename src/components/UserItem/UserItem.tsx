@@ -14,7 +14,7 @@ const UserItem = (props: UserProps): JSX.Element => {
       <ListItemAvatar>
         <Avatar alt="avatar" src={user.avatar} sx={avatarStyles} />
       </ListItemAvatar>
-      <StyledListItemText primary={`${user.firstName} ${user.lastName}`} secondary={user.email} />
+      <StyledListItemText primary={`${user.first_name} ${user.last_name}`} secondary={user.email} />
     </ListItem>
   );
 };
