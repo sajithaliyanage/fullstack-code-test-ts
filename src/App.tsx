@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC, useEffect, useState } from 'react';
+import Layout from './components/Layout';
+import { CssBaseline } from '@mui/material';
+import LazyProgress from './components/LazyProgress';
 
-function App() {
+const App: FC = (): JSX.Element => {
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const timer: NodeJS.Timeout = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <CssBaseline />
+      {loading ? (
+        <LazyProgress />
+      ) : (
+        <Layout>
+          <div></div>
+        </Layout>
+      )}
+    </>
   );
-}
+};
 
 export default App;
