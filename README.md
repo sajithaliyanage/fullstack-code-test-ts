@@ -1,30 +1,56 @@
-# Ombori Code Test
+# Ombori Code Test - Fullstack
 
-Hi there, we're really excited that you've made it this far in our interview process and look forward to getting to know you better.
+![app screenshots](/resources/cover.jpg)
 
-At Ombori, we strive to build fantastic apps using well structured and efficient code.
-The purpose of this task is to see how you solve problems and to make sure that you follow our linting rules as well as industry best practices.
+## Overview
 
-We've scaffolded a very basic project using create-react-app that will serve as your starting point for the task.
+This web application is developed using React with Typescript and Redux-Toolkit. It interfaces with external APIs to load user data dynamically.
 
-___
+## Key Features
 
-What the test app should do:
+1. **Custom Loader**: The application displays a custom loader for 3 seconds during the initial loading phase.
 
-* Display a custom loading component for 3 seconds
-* Fetch user data from https://reqres.in/
-* Display those users in a scrollable view that lazy loads more users when you've reached the bottom of the list, if there are no more users to load it should indicate that there are no more users.
-* Be responsive, look great and work well on different devices, especially various mobile screens
+2. **User Data Fetching**: User data is fetched from the [reqres.in](https://reqres.in/) API to populate the application.
 
-We've prepared some screenshots in the design folder as well as a video of what the loading component should look like.
+3. **Infinite Scrolling**: The application implements lazy loading of user data through infinite scrolling, enhancing the user experience.
 
-___
+4. **Dark/Light Mode Switch**: Users can toggle between dark and light modes to customize their viewing experience.
 
-Those are the requirements. If you wish to show off more of your skillset, feel free to expand upon the app. We encourage you to solve the challenge using your favorite libraries and take the opportunity to present your toolbox, preferences and experience.
+5. **Code Formatting**: EsLint and Prettier are utilized for consistent and clean code formatting, ensuring code quality and maintainability.
 
-We only ask that you be able to motivate your choices.
 
-Before submitting your result please make sure that:
-* The code is formatted (including your favorite linter is a good idea); code that does not meet basic readability criteria will be rejected
-* The application resembles what is visible on screenshots in the design folder
-* The application meets criteria listed above in common desktop and mobile browsers
+## Getting Started with Docker
+
+Follow the below steps to run the application in a Docker environment.
+
+ 1. Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) & [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/)
+   
+ 2. Clone the repository
+    ```bash
+    git clone https://github.com/sajithaliyanage/fullstack-code-test-ts.git
+    ```
+ 3. Run application
+    ```bash
+    cd fullstack-code-test-ts
+    docker-compose -f docker-compose.yaml up --build 
+    ```
+ 4. Open browser `http://localhost:3000`
+
+
+## Getting Started without Docker
+
+Follow the below steps to run the application in your local environment.
+
+ 1. Install [Node](https://nodejs.org/en/)
+   
+ 2. Clone the repository
+    ```bash
+    git clone https://github.com/sajithaliyanage/fullstack-code-test-ts.git
+    ```
+
+ 3. Install and run React application
+      ```bash
+      cd fullstack-code-test-ts
+      npm install
+      npm start
+      ```
