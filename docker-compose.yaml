@@ -1,0 +1,27 @@
+#   port mappings
+#
+#   service         local -> host
+#   ------------------------------
+#   web               80  -> 3000
+
+version: '3.3'
+services:
+  proxy:
+    build:
+      context: ./proxy
+    depends_on:
+      - web
+    links:
+      - web
+    ports:
+      - '3000:80'
+    restart: always
+    stdin_open: true
+    tty: true
+  web:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    stdin_open: true
+    tty: true
