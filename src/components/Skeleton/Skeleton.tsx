@@ -8,7 +8,7 @@ const UserSkeleton = (props: UserSkeletonProps): JSX.Element => {
   const skeletonItems = Array.from({ length: count }, (_, index) => (
     <ListItem key={index}>
       <ListItemAvatar>
-        <Skeleton variant="circular" width={80} height={80} />
+        <Skeleton variant="circular" width={80} height={80} sx={{ marginRight: 2 }} />
       </ListItemAvatar>
       <ListItemText
         primary={<Skeleton variant="text" width={'100%'} />}

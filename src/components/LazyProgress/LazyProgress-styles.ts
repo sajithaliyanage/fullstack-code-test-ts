@@ -33,3 +33,13 @@ export const StyledDiv = styled('div')(() => ({
     ...backgroundColors,
   },
 }));
+
+export const LoaderDiv = styled('div')(() => ({
+  backgroundColor: '#ffffff',
+  zIndex: 1,
+  position: 'absolute',
+  top: 0,
+  bottom: 0,
+  left: 0,
+  right: 0,
+}));
