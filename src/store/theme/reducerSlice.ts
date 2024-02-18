@@ -17,10 +17,14 @@ const themeReducer = createSlice({
         state.palette.mode === THEME_MODES.LIGHT_MODE
           ? THEME_MODES.DARK_MODE
           : THEME_MODES.LIGHT_MODE;
+      localStorage.setItem('THEME', state.palette.mode);
+    },
+    setTheme: (state, action) => {
+      state.palette.mode = action.payload.theme;
     },
   },
 });
 
-export const { updateTheme } = themeReducer.actions;
+export const { setTheme, updateTheme } = themeReducer.actions;
 
 export default themeReducer.reducer;
